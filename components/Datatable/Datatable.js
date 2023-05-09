@@ -429,7 +429,7 @@ const ComponentCursorPointer = ({ cell, setAction, row }) => {
     <Text
       ref={tdRef}
       noOfLines={1}
-      onClick={() => setAction(asPath !== "/questions" ? { type: "VIEWW", payload: { _id: row.original._id } } : { type: "EDIT", payload: { _id: row.original._id } })}>
+      onClick={() => setAction(/* asPath !== "/questions" ? { type: "VIEWW", payload: { _id: row.original._id } } : */ { type: "EDIT", payload: { _id: row.original._id } })}>
       {cell.render("Cell")}
     </Text>
   )
