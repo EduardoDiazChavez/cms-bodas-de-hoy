@@ -1,4 +1,4 @@
-export const OptionsForm = ({alertDev, setAlertDev}) => {
+export const OptionsForm = ({ alertDev, setAlertDev, schema, user }) => {
 
     return (
         <div className="bg-white rounded-2xl pt-2.5 pr-3.5 pb-2.5 pl-3.5 flex flex-col gap-2.5 items-start justify-start shrink-0 w-[250px] relative" style={{ boxShadow: "var(--_01-shadows-light-z-card-box-shadow, 0px 12px 24px -4px rgba(145, 158, 171, 0.12), 0px 0px 2px 0px rgba(145, 158, 171, 0.20))" }}>
@@ -11,11 +11,11 @@ export const OptionsForm = ({alertDev, setAlertDev}) => {
 
             <div className="flex flex-row gap-[3px] items-center justify-center shrink-0 w-[250px]* h-9 relative" >
 
-                <button type="submit"  className="text-white text-sm relative bg-green-700 rounded-lg pt-[11px] pr-[22px] pb-[11px] pl-[22px] flex flex-row gap-0 items-center justify-center shrink-0 w-[100px] h-[30px] relative" style={{ boxShadow: "4px 4px 4px 0px rgba(4, 120, 87, 0.25)" }}>
+                <button type="submit" className="text-white text-sm relative bg-green-700 rounded-lg pt-[11px] pr-[22px] pb-[11px] pl-[22px] flex flex-row gap-0 items-center justify-center shrink-0 w-[100px] h-[30px] relative" style={{ boxShadow: "4px 4px 4px 0px rgba(4, 120, 87, 0.25)" }}>
                     Guardar
                 </button>
 
-                <button type="button" onClick={()=>setAlertDev(!alertDev)} className=" text-white text-sm relative bg-green-700 rounded-lg pt-[11px] *pr-[2px] pb-[11px] *pl-[2px] flex flex-row  items-center justify-center shrink-0 w-[120px] h-[30px] relative" style={{ boxShadow: "4px 4px 4px 0px rgba(4, 120, 87, 0.25)" }}>
+                <button type="button" onClick={() => setAlertDev(!alertDev)} className=" text-white text-sm relative bg-green-700 rounded-lg pt-[11px] *pr-[2px] pb-[11px] *pl-[2px] flex flex-row  items-center justify-center shrink-0 w-[120px] h-[30px] relative" style={{ boxShadow: "4px 4px 4px 0px rgba(4, 120, 87, 0.25)" }}>
                     Pre-visualizar
                 </button>
 
@@ -201,15 +201,25 @@ export const OptionsForm = ({alertDev, setAlertDev}) => {
             </div>
 
             <div className="flex flex-row gap-4 items-center justify-center shrink-0 w-[100%] relative" >
-
-                <div className="bg-green-700 rounded-lg pt-[11px] pr-[22px] pb-[11px] pl-[22px] flex flex-row gap-0 items-center justify-center shrink-0 w-[110px]* h-[30px] relative" style={{ boxShadow: "var(--_01-shadows-color-01-primary-box-shadow, 0px 8px 16px 0px rgba(0, 171, 85, 0.24))" }}>
-
+                {schema && schema?.map((item, idx) => {
+                    const valir = !item?.roles ? true : item?.roles?.some(role => user?.role.includes(role))
+                    switch (valir && item.type) {
+                        case "switch":
+                            return (
+                                <SwitchField
+                                    key={idx}
+                                    name={item.accessor}
+                                    label={item.Header}
+                                />
+                            );
+                            break;
+                    }
+                })}
+                {/* <div className="bg-green-700 rounded-lg pt-[11px] pr-[22px] pb-[11px] pl-[22px] flex flex-row gap-0 items-center justify-center shrink-0 w-[110px]* h-[30px] relative" style={{ boxShadow: "var(--_01-shadows-color-01-primary-box-shadow, 0px 8px 16px 0px rgba(0, 171, 85, 0.24))" }}>
                     <div className="text-white text-sm relative" >
                         Publicar
                     </div>
-
-                </div>
-
+                </div> */}
             </div>
 
         </div>

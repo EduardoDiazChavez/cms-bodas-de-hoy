@@ -348,7 +348,7 @@ export const FormDinamical = forwardRef(
 
                     {/* columna derecha */}
                     <GridItem className="space-y-2 w-max relative" colSpan={1} >
-                      <OptionsForm alertDev={alertDev} setAlertDev={setAlertDev} />
+                      <OptionsForm alertDev={alertDev} setAlertDev={setAlertDev} schema={schema} user={user}/>
                       <Seudonimo modal={modal} setModal={setModal} listDown={listDown} setListDown={setListDown} found={found} user={user} />
                       <div className={`${listDown ? "block" : "hidden"}  absolute  right-[1.5rem] z-30`}>
                         <SeudonimoList list={SeudonimoListEjm} listDown={listDown} setListDown={setListDown} foundList={foundList} setFoundList={setFoundList} />
