@@ -8,7 +8,7 @@ export const SwitchField = memo(({ label, ...props }) => {
 
   return (
     <Box>
-      <Divider />
+     {/*  <Divider /> */}
       <FormLabel
         paddingTop={"1rem"}
         fontWeight={"900"}

@@ -202,7 +202,7 @@ export const FormDinamical = forwardRef(
                                 </GridItem>
                               );
                               break;
-                            case "switch":
+                            /* case "switch":
                               return (
                                 <SwitchField
                                   key={idx}
@@ -210,7 +210,7 @@ export const FormDinamical = forwardRef(
                                   label={item.Header}
                                 />
                               );
-                              break;
+                              break; */
                             case "slug":
                               return (
                                 <div className="hidden">
